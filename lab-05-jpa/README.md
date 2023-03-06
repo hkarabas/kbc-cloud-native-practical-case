@@ -9,7 +9,7 @@ A partial example for the ``CocktailEntity`` class:
 
 ```java
 @Entity
-@Table(name = "cocktail")
+@Table(name = "cocktailDto")
 public class CocktailEntity {
     //declare fields + methods here
 }
