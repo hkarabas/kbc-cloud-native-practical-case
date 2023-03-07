@@ -1,20 +1,20 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
 
 public class ShoppingListDto {
 
-    @ApiModelProperty(notes = "Shopping List Id",name="id",required=true,value="")
+    @Schema(description = "Shopping List Id",name="id",required=true,defaultValue = "")
     String shoppingListId;
 
-    @ApiModelProperty(notes = "Shopping List name",name="name",required=true,value="")
+    @Schema(description = "Shopping List name",name="name",required=true,defaultValue="")
     String name;
 
-    @ApiModelProperty(notes = "Cocktail Id",name="id",required=false,value="")
+    @Schema(description = "Cocktail Id",name="id")
     String cocktailId;
 
-    @ApiModelProperty(notes = "Cocktail include ingredients",name="ingredients")
+    @Schema(description = "Cocktail include ingredients",name="ingredients")
     Set<String>  ingredients;
 
 

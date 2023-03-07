@@ -1,28 +1,28 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
 import org.springframework.util.CollectionUtils;
 
 public class CocktailDto {
 
-    @ApiModelProperty(notes = "Cocktail Id",name="id",required=true,value="23b3d85a-3928-41c0-a533-6538a71e17c4")
+    @Schema(description = "Cocktail Id",name="id",required=true,defaultValue="23b3d85a-3928-41c0-a533-6538a71e17c4")
     String cocktailId;
 
-    @ApiModelProperty(notes = "Cocktail Name",name="name",required=true,value="Margerita")
+    @Schema(description = "Cocktail Name",name="name",required=true,defaultValue="Margerita")
     String name;
 
-    @ApiModelProperty(notes = "Cocktail Glass",name="glass",required=false,value="Cocktail glass")
+    @Schema(description = "Cocktail Glass",name="glass",defaultValue="Cocktail glass")
     String glass;
 
-    @ApiModelProperty(notes = "Image",name="image",required=false,value="https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg")
+    @Schema(description = "Image",name="image",defaultValue="https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg")
     String image;
 
-    @ApiModelProperty(notes = "Cocktail making instructions",name="glass",required=false,value="Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten..")
+    @Schema(description = "Cocktail making instructions",name="glass",defaultValue="Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten..")
     String instructions;
 
-    @ApiModelProperty(notes = "Cocktail include ingredients",name="ingredients")
+    @Schema(description = "Cocktail include ingredients",name="ingredients")
     Set<String> ingredients;
 
     public CocktailDto(Builder builder) {

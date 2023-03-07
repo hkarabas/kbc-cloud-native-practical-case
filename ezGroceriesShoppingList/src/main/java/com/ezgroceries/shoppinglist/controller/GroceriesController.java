@@ -4,10 +4,13 @@ package com.ezgroceries.shoppinglist.controller;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
 import com.ezgroceries.shoppinglist.service.GroceriesService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import java.net.URI;
 import java.util.List;
 import org.slf4j.Logger;
@@ -19,12 +22,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @RestController
-@Api(value = "Groceries Rest Controller", description = "REST API for Groceries")
+@OpenAPIDefinition(info = @Info(title = "Groceries Rest Controller", description = "REST API for Groceries"))
 public class GroceriesController {
 
     private final Logger logger = LoggerFactory.getLogger(GroceriesController.class);
@@ -36,54 +38,70 @@ public class GroceriesController {
         this.groceriesService = groceriesService;
     }
 
-    @ApiOperation(value = "Get Cocktails", response = Iterable.class, tags = "getCocktailList")
+    @Operation(summary = "Get Cocktails",tags = "getCocktailList")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success|OK"),
-            @ApiResponse(code = 404, message = "Not Found!") })
+            @ApiResponse( responseCode = "200", description = "Success|OK",
+                          content = { @Content(mediaType = "application/json",
+                          schema = @Schema(implementation = Iterable.class))}),
+            @ApiResponse(responseCode = "404", description = "Cocktail list not found",
+                    content = @Content) })
     @GetMapping("/cocktails")
     public List<CocktailDto> getCocktailList(@RequestParam String search) {
         logger.info(String.format("call getCocktailList by request param %s",search));
-       return this.groceriesService.getCocktailList();
+        return this.groceriesService.getCocktailList();
     }
 
-    @ApiOperation(value = "Create Shopping List", response = ResponseEntity.class, tags = "createShoppingList")
+    @Operation(summary = "Create Shopping List",  tags = "createShoppingList")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Create|OK")})
+            @ApiResponse(responseCode = "201", description = "Create|OK")})
     @PostMapping("/shopping-lists")
     public ResponseEntity<Void> createShoppingList( @RequestParam String name) {
-      ShoppingListDto shoppingListDto = groceriesService.createShoppingListDto(name);
-      return  entityWithLocation(shoppingListDto);
+
+        logger.info(String.format("call createShoppingList by request param %s",name));
+        ShoppingListDto shoppingListDto = groceriesService.createShoppingListDto(name);
+        return  entityWithLocation(shoppingListDto.getShoppingListId());
+
     }
 
 
-    @ApiOperation(value = "Add Cocktail to Shopping List", response = ResponseEntity.class, tags = "addCocktailToShoppingList")
+    @Operation(summary = "Add Cocktail to Shopping List", tags = "addCocktailToShoppingList")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Create|OK")})
+            @ApiResponse(responseCode = "201", description = "Create|OK")})
     @PostMapping("/shopping-lists/{shoppingListId}/cocktails")
     public ResponseEntity<Void> addCocktailToShoppingList(@PathVariable String shoppingListId,@RequestParam String cocktailId) {
-       ShoppingListDto shoppingListDto = groceriesService.addCocktailtoShoppingList(shoppingListId,cocktailId);
-       return entityWithLocation(shoppingListDto.getShoppingListId());
+
+        logger.info(String.format("call add cocktail shopping by request param %s %s",shoppingListId,cocktailId));
+        ShoppingListDto shoppingListDto = groceriesService.addCocktailToShoppingList(shoppingListId,cocktailId);
+        return entityWithLocation(shoppingListDto.getShoppingListId());
+
     }
 
-    @ApiOperation(value = "Get Shopping List By ID", response = ShoppingListDto.class, tags = "getShoppingListDto")
+    @Operation(summary = "Get Shopping List By ID",  tags = "getShoppingListDto")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success|OK"),
-            @ApiResponse(code = 404, message = "Not Found!")})
+            @ApiResponse(responseCode = "200", description = "Success|OK" ,
+                    content = { @Content(mediaType = "application/json",
+                                schema = @Schema(implementation = ShoppingListDto.class))}),
+            @ApiResponse(responseCode = "404", description = "Shopping Not Found!")})
     @GetMapping("/shopping-lists/{shoppingListId}")
     public ShoppingListDto getShoppingListDto(@PathVariable String shoppingListId) {
+        logger.info(String.format("shoppingListDto shopping by request param %s ",shoppingListId));
         return groceriesService.getShoppingListDto(shoppingListId);
     }
 
-    @ApiOperation(value = "Get Shopping List", response = Iterable.class, tags = "getShoppingListDtoList")
+    @Operation(description = "Get Shopping List", tags = "getShoppingListDtoList")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success|OK"),
-            @ApiResponse(code = 404, message = "Not Found!")})
+            @ApiResponse( responseCode = "200", description = "Success|OK",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Iterable.class))}),
+            @ApiResponse(responseCode = "404", description = "Shopping list not found",
+                    content = @Content) })
     @GetMapping("/shopping-lists")
     public List<ShoppingListDto> getShoppingListDtoList() {
+        logger.info("shoppingListDto shopping list full");
         return groceriesService.shoppingListDtoList();
     }
 
-    private ResponseEntity<Void> entityWithLocation(Object resourceId) {
+    private ResponseEntity<Void> entityWithLocation(String resourceId) {
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
