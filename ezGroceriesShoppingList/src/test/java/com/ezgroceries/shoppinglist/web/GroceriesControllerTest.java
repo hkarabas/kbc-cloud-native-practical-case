@@ -83,12 +83,12 @@ public class GroceriesControllerTest {
         when(groceriesService.getCocktailList()).thenReturn(cocktailDtoList);
 
         mockMvc.perform(get("/cocktails").param("search","Russian"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].cocktailId",is("23b3d85a-3928-41c0-a533-6538a71e17c4")))
-                .andExpect(jsonPath("$[0].name" ,is("Margerita")))
-                .andExpect(jsonPath("$[1].cocktailId").value("d615ec78-fe93-467b-8d26-5d26d8eab073"))
-                .andExpect(jsonPath("$[1].name").value("Blue Margerita"));
+                .andExpectAll(status().isOk(),
+                        content().contentType(MediaType.APPLICATION_JSON),
+                        jsonPath("$[0].cocktailId",is("23b3d85a-3928-41c0-a533-6538a71e17c4")),
+                        jsonPath("$[0].name" ,is("Margerita")),
+                        jsonPath("$[1].cocktailId",is("d615ec78-fe93-467b-8d26-5d26d8eab073")),
+                        jsonPath("$[1].name",is("Blue Margerita")));
 
         verify(groceriesService).getCocktailList();
     }
@@ -157,12 +157,13 @@ public class GroceriesControllerTest {
     public void getShoppingListOfList() throws Exception {
         when(groceriesService.shoppingListDtoList()).thenReturn(shoppingListDtoList);
         mockMvc.perform(get("/shopping-lists"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Stephanie's birthday"))
-                .andExpect(jsonPath("$[0].shoppingListId").value("4ba92a46-1d1b-4e52-8e38-13cd56c7224c"))
-                .andExpect(jsonPath("$[1].name").value("My Birthday"))
-                .andExpect(jsonPath("$[1].shoppingListId").value("6c7d09c2-8a25-4d54-a979-25ae779d2465"));
-     }
+                .andExpectAll(status().isOk()
+                              ,jsonPath("$[0].name").value("Stephanie's birthday")
+                              ,jsonPath("$[0].shoppingListId").value("4ba92a46-1d1b-4e52-8e38-13cd56c7224c")
+                              ,jsonPath("$[1].name").value("My Birthday")
+                              ,jsonPath("$[1].shoppingListId").value("6c7d09c2-8a25-4d54-a979-25ae779d2465"));
+
+        }
 
     @Test
     public void getShoppingListById() throws Exception {
