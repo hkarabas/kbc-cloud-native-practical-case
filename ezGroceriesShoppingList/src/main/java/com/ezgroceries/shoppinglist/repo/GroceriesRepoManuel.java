@@ -79,7 +79,9 @@ public class GroceriesRepoManuel implements IGroceriesRepo {
 
     @Override
     public Optional<ShoppingListDto> getByShoppingById(String shoppingListId) {
-        return shoppingListDtos.stream().filter(shoppingListDto -> shoppingListDto.getShoppingListId().equals(shoppingListId)).findFirst();
+        Optional<ShoppingListDto> shoppingListDtoOptional = shoppingListDtos.stream().filter(shoppingListDto -> shoppingListDto.getShoppingListId().equals(shoppingListId)).findFirst();
+        System.out.println(shoppingListDtoOptional);
+        return  shoppingListDtoOptional;
     }
 
 

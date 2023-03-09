@@ -41,7 +41,7 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(UniqueRecordException.class)
+    @ExceptionHandler({UniqueRecordException.class ,IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public ResponseEntity<ErrorMessage> uniqueException(RuntimeException ex,WebRequest request) {
         ErrorMessage errorMessage = new ErrorMessage(

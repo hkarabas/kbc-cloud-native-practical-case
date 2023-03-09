@@ -13,6 +13,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import java.net.URI;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +57,11 @@ public class GroceriesController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Create|OK")})
     @PostMapping("/shopping-lists")
-    public ResponseEntity<Void> createShoppingList( @RequestParam String name) {
+    public ResponseEntity<Void> createShoppingList(@NotNull @RequestParam String name) {
+
+        if (StringUtils.isEmpty(name)) {
+            throw  new IllegalArgumentException("shoppingLis name is must be not null");
+        }
 
         logger.info(String.format("call createShoppingList by request param %s",name));
         ShoppingListDto shoppingListDto = groceriesService.createShoppingListDto(name);
@@ -102,8 +108,7 @@ public class GroceriesController {
     }
 
     private ResponseEntity<Void> entityWithLocation(String resourceId) {
-
-        URI location = ServletUriComponentsBuilder
+      URI location = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{resourceId}")
                 .buildAndExpand(resourceId)
