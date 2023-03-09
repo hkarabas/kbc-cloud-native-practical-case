@@ -51,9 +51,8 @@ public class GroceriesService {
     }
 
     public ShoppingListDto getShoppingListDto(String shoppingListId) {
-          ShoppingListDto shoppingListDto = groceriesRepoManuel.getByShoppingById(shoppingListId)
+          return  groceriesRepoManuel.getByShoppingById(shoppingListId)
                   .orElseThrow(()-> {throw new ResourceNotFoundException(String.format("Shopping not found %s",shoppingListId));});
-          return shoppingListDto;
     }
 
     public List<ShoppingListDto> shoppingListDtoList(){

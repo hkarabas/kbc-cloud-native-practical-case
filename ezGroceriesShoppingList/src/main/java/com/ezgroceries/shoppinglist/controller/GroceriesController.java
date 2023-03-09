@@ -78,7 +78,12 @@ public class GroceriesController {
 
         logger.info(String.format("call add cocktail shopping by request param %s %s",shoppingListId,cocktailId));
         ShoppingListDto shoppingListDto = groceriesService.addCocktailToShoppingList(shoppingListId,cocktailId);
-        return entityWithLocation(shoppingListDto.getShoppingListId());
+        if (shoppingListDto != null){
+            return entityWithLocation(shoppingListDto.getShoppingListId());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
 
     }
 
@@ -89,9 +94,9 @@ public class GroceriesController {
                                 schema = @Schema(implementation = ShoppingListDto.class))}),
             @ApiResponse(responseCode = "404", description = "Shopping Not Found!")})
     @GetMapping("/shopping-lists/{shoppingListId}")
-    public ShoppingListDto getShoppingListDto(@PathVariable String shoppingListId) {
+    public ResponseEntity<ShoppingListDto> getShoppingListDto(@PathVariable String shoppingListId) {
         logger.info(String.format("shoppingListDto shopping by request param %s ",shoppingListId));
-        return groceriesService.getShoppingListDto(shoppingListId);
+       return ResponseEntity.ok(groceriesService.getShoppingListDto(shoppingListId));
     }
 
     @Operation(description = "Get Shopping List", tags = "getShoppingListDtoList")

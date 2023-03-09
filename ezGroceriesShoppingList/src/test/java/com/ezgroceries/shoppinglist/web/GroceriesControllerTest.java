@@ -4,29 +4,31 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.ezgroceries.shoppinglist.controller.GroceriesController;
+import com.ezgroceries.shoppinglist.exception.ResourceNotFoundException;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
 import com.ezgroceries.shoppinglist.repo.GroceriesRepoManuel;
 import com.ezgroceries.shoppinglist.service.GroceriesService;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(GroceriesController.class)
 public class GroceriesControllerTest {
@@ -121,11 +123,70 @@ public class GroceriesControllerTest {
 
     @Test
     public void getShoppingListDtoByIdNotFound() throws Exception {
-        when(groceriesRepoManuel.getByShoppingById(any(String.class))).thenReturn(Optional.empty());
+        when(groceriesService.getShoppingListDto(any(String.class)))
+                .thenThrow(new ResourceNotFoundException(String.format("Shopping not found %s","13cd56c7224c")));
         mockMvc.perform(get("/shopping-lists/{shoppingListId}","13cd56c7224c"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath( "$.message").value(String.format("Shopping not found %s","13cd56c7224c")));
+                .andExpect(status().isNotFound());
         verify(groceriesService).getShoppingListDto(any(String.class));
+    }
+
+    @Test
+    public void addCocktailToShoppingList() throws Exception {
+        when(groceriesService.addCocktailToShoppingList("4ba92a46-1d1b-4e52-8e38-13cd56c7224c","23b3d85a-3928-41c0-a533-6538a71e17c4"))
+                .thenReturn(shoppingListDtoList.get(0));
+        
+        mockMvc.perform(post("/shopping-lists/{shoppingListId}/cocktails","4ba92a46-1d1b-4e52-8e38-13cd56c7224c").
+                param("cocktailId","23b3d85a-3928-41c0-a533-6538a71e17c4"))
+                .andExpect(status().isCreated())
+                .andExpect(header().string("Location","http://localhost/shopping-lists/4ba92a46-1d1b-4e52-8e38-13cd56c7224c/cocktails/4ba92a46-1d1b-4e52-8e38-13cd56c7224c"));
+        verify(groceriesService).addCocktailToShoppingList(any(String.class),any(String.class));
+    }
+
+    @Test
+    public void addCocktailToShoppingList_ThrowNotFoundCocktailId() throws Exception {
+
+        when(groceriesRepoManuel.getCocktailByCocktailId("23b3d85a-3928-41c0")).thenReturn(Optional.empty());
+
+        mockMvc.perform(post("/shopping-lists/{shoppingListId}/cocktails","4ba92a46-1d1b-4e52-8e38-13cd56c7224c").
+                        param("cocktailId","23b3d85a-3928-41c0-a533-6538a71e17c4"))
+                .andExpect(status().isNotFound());
+        verify(groceriesService).addCocktailToShoppingList(any(String.class),any(String.class));
+    }
+
+    @Test
+    public void getShoppingListOfList() throws Exception {
+        when(groceriesService.shoppingListDtoList()).thenReturn(shoppingListDtoList);
+        mockMvc.perform(get("/shopping-lists"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("Stephanie's birthday"))
+                .andExpect(jsonPath("$[0].shoppingListId").value("4ba92a46-1d1b-4e52-8e38-13cd56c7224c"))
+                .andExpect(jsonPath("$[1].name").value("My Birthday"))
+                .andExpect(jsonPath("$[1].shoppingListId").value("6c7d09c2-8a25-4d54-a979-25ae779d2465"));
+     }
+
+    @Test
+    public void getShoppingListById() throws Exception {
+
+        ShoppingListDto shoppingListDto = shoppingListDtoList.get(0);
+        when(groceriesRepoManuel.getByShoppingById(any(String.class))).thenReturn(Optional.of(shoppingListDto));
+        when(groceriesService.getShoppingListDto(any(String.class))).thenReturn(shoppingListDto);
+
+        mockMvc.perform(get("/shopping-lists/{shoppingListId}","4ba92a46-1d1b-4e52-8e38-13cd56c7224c"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Stephanie's birthday"))
+                .andExpect(jsonPath("$.shoppingListId").value("4ba92a46-1d1b-4e52-8e38-13cd56c7224c"));
+
+        verify(groceriesService).getShoppingListDto(any(String.class));
+    }
+
+    @Test
+    public void getShoppingListByIdNotFound() throws Exception {
+
+        when(groceriesService.getShoppingListDto(any(String.class))).thenThrow(new ResourceNotFoundException(String.format("Shopping not found %s","4ba92a46")));
+
+        mockMvc.perform(get("/shopping-lists/{shoppingListId}","4ba92a46"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("Shopping not found 4ba92a46"));
     }
 
 
