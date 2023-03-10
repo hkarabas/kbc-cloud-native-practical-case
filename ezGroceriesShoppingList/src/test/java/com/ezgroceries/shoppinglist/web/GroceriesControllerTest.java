@@ -13,8 +13,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.ezgroceries.shoppinglist.controller.GroceriesController;
 import com.ezgroceries.shoppinglist.exception.ResourceNotFoundException;
+import com.ezgroceries.shoppinglist.model.dto.CocktailDBResponse;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
+import com.ezgroceries.shoppinglist.out.CocktailDBClient;
 import com.ezgroceries.shoppinglist.repo.GroceriesRepoManuel;
 import com.ezgroceries.shoppinglist.service.GroceriesService;
 import java.util.ArrayList;
@@ -41,6 +43,9 @@ public class GroceriesControllerTest {
 
     @MockBean
     GroceriesRepoManuel groceriesRepoManuel;
+
+    @MockBean
+    CocktailDBClient cocktailDBClient;
 
     private  List<CocktailDto> cocktailDtoList = new ArrayList<>() ;
     private  List<ShoppingListDto> shoppingListDtoList = new ArrayList<>();
@@ -93,6 +98,17 @@ public class GroceriesControllerTest {
         verify(groceriesService).getCocktailList();
     }
 
+    @Test
+    public void getCocktailListDb() throws Exception {
+        when(cocktailDBClient.searchCocktails(any(String.class))).thenReturn(new CocktailDBResponse());
+        mockMvc.perform(get("/cocktailsdb").param("search","Russian")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                        .andExpectAll(status().isOk(),
+                                     content().contentType(MediaType.APPLICATION_JSON_VALUE)
+                       );
+
+        verify(cocktailDBClient).searchCocktails(any(String.class));
+    }
     @Test
     public  void createShoppingList() throws Exception {
         when(groceriesService.createShoppingListDto(any(String.class))).thenReturn(shoppingListDtoList.get(0));
