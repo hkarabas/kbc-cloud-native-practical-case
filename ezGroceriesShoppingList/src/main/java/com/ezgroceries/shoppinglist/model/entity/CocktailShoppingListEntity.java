@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="cocktail_shopping_list")
-public class Cocktail_Shopping_List {
+public class CocktailShoppingListEntity {
 
     @Id
     String id;
@@ -22,11 +22,11 @@ public class Cocktail_Shopping_List {
 
     @ManyToOne
     @JoinColumn(name = "cocktail_id")
-    Cocktail cocktail;
+    CocktailEntity cocktailEntity;
 
     @ManyToOne
     @JoinColumn(name="shopping_list_id")
-    ShoppingList shoppingList;
+    ShoppingListEntity shoppingListEntity;
 
     public void setId(String id) {
         this.id = id;
@@ -53,11 +53,11 @@ public class Cocktail_Shopping_List {
         return shoppingListId;
     }
 
-    public Cocktail getCocktail() {
-        return cocktail;
+    public CocktailEntity getCocktail() {
+        return cocktailEntity;
     }
 
-    public ShoppingList getShoppingList() {
-        return shoppingList;
+    public ShoppingListEntity getShoppingList() {
+        return shoppingListEntity;
     }
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cocktail")
-public class Cocktail {
+public class CocktailEntity {
 
     @Id
     String id;
@@ -24,8 +24,8 @@ public class Cocktail {
     @Convert(converter = StringSetConverter.class)
     String ingredients;
 
-    @OneToMany(mappedBy = "cocktail")
-    Set<Cocktail_Shopping_List> cocktail_shopping_lists;
+    @OneToMany(mappedBy = "cocktailEntity")
+    Set<CocktailShoppingListEntity> cocktail_shopping_lists;
 
     public void setId(String id) {
         this.id = id;
@@ -59,7 +59,7 @@ public class Cocktail {
         return ingredients;
     }
 
-    public Set<Cocktail_Shopping_List> getCocktail_shopping_lists() {
+    public Set<CocktailShoppingListEntity> getCocktail_shopping_lists() {
         return cocktail_shopping_lists;
     }
 }

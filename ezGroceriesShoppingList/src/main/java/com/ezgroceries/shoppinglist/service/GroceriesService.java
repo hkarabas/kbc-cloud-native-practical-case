@@ -4,26 +4,53 @@ import com.ezgroceries.shoppinglist.exception.ResourceNotFoundException;
 import com.ezgroceries.shoppinglist.exception.UniqueRecordException;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
+import com.ezgroceries.shoppinglist.out.CocktailDBClient;
+import com.ezgroceries.shoppinglist.repo.CocktailRepo;
+import com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepo;
 import com.ezgroceries.shoppinglist.repo.GroceriesRepoManuel;
+import com.ezgroceries.shoppinglist.repo.ShoppingListRepo;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GroceriesService {
 
-    private GroceriesRepoManuel groceriesRepoManuel;
+    private CocktailRepo cocktailRepo;
+    private ShoppingListRepo shoppingListRepo;
+    private CocktailShoppingListRepo cocktailShoppingListRepo;
+    private CocktailDBClient cocktailDBClient;
+
+
+
 
     @Autowired
-    public GroceriesService(GroceriesRepoManuel groceriesRepoManuel) {
-        this.groceriesRepoManuel = groceriesRepoManuel;
+    public GroceriesService(CocktailRepo cocktailRepo,ShoppingListRepo shoppingListRepo,
+                CocktailShoppingListRepo cocktailShoppingListRepo,CocktailDBClient cocktailDBClient) {
+        this.cocktailRepo = cocktailRepo;
+        this.shoppingListRepo = shoppingListRepo;
+        this.cocktailShoppingListRepo = cocktailShoppingListRepo;
+        this.cocktailDBClient = cocktailDBClient;
     }
 
-    public List<CocktailDto> getCocktailList() {
-        return groceriesRepoManuel.getCockTailsStatics();
+    private List<CocktailDto> getCocktailDtoListFromRemote(String name) {
+     return    this.cocktailDBClient.searchCocktails(name).getDrinks().stream().map(cocktailDb->
+            CocktailDto.Builder.newInstance().coctailId(cocktailDb.getIdDrink())
+                   .name(cocktailDb.getStrDrink())
+                   .glass(cocktailDb.getStrGlass())
+                   .instructions(cocktailDb.getStrInstructions())
+                   .ingredients(cocktailDb.getIngredients()).build()
+            ).collect(Collectors.toList());
     }
+
+    private List<CocktailDto> getCocktailDtoList(String name) {
+        return this.shoppingListRepo.findByName()
+    }
+
+
 
 
     public ShoppingListDto createShoppingListDto(String name) {

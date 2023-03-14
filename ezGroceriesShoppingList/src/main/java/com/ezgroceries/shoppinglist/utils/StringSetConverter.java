@@ -7,7 +7,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import org.springframework.util.CollectionUtils;
 
-@Converter
+@Converter(autoApply = true)
 public class StringSetConverter implements AttributeConverter<Set<String>, String> {
 
     @Override

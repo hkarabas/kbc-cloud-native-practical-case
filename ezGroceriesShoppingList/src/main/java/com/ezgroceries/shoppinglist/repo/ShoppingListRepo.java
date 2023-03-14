@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ShoppingList extends JpaRepository<ShoppingListEntity,String> {
+public interface ShoppingListRepo extends JpaRepository<ShoppingListEntity,String> {
 
     @Override
     List<ShoppingListEntity> findAll();
 
-    Optional<ShoppingListEntity> findByName();
+    Optional<ShoppingListEntity> findByName(String name);
 
 
 

@@ -245,14 +245,14 @@ public class CocktailDBResponse  {
             this.strMeasure10 = strMeasure10;
         }
 
-        public Set<String> ingredients() {
+        public Set<String> getIngredients() {
             return Set.of(  strIngredient1,strIngredient2,strIngredient3,
                             strIngredient4,strIngredient5,strIngredient6,
                             strIngredient7,strIngredient8,strIngredient9,
                             strIngredient10);
         }
 
-        public Set<String> measures() {
+        public Set<String> getMeasures() {
             return Set.of(  strMeasure1,strMeasure2,strMeasure3,
                     strMeasure4,strIngredient5,strIngredient6,
                     strIngredient7,strIngredient8,strIngredient9,

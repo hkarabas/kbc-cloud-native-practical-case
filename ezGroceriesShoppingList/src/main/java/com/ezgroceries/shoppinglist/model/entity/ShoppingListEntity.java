@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "shopping_list")
-public class ShoppingList {
+public class ShoppingListEntity {
 
     @Id
     String id;
@@ -18,7 +18,7 @@ public class ShoppingList {
     String name;
 
     @OneToMany(mappedBy = "shopping_list")
-    Set<Cocktail_Shopping_List>  cocktail_shopping_lists;
+    Set<CocktailShoppingListEntity>  cocktail_shopping_lists;
 
     public void setId(String id) {
         this.id = id;
@@ -36,7 +36,7 @@ public class ShoppingList {
         return name;
     }
 
-    public Set<Cocktail_Shopping_List> getCocktail_shopping_lists() {
+    public Set<CocktailShoppingListEntity> getCocktail_shopping_lists() {
         return cocktail_shopping_lists;
     }
 }
