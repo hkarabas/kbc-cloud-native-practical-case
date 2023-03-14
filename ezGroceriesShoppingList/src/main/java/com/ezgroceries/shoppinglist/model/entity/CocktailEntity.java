@@ -1,7 +1,9 @@
 package com.ezgroceries.shoppinglist.model.entity;
 
+import com.ezgroceries.shoppinglist.utils.StringSetConverter;
 import java.util.Set;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,7 +20,8 @@ public class Cocktail {
     String idDrink;
 
     String name;
-    
+
+    @Convert(converter = StringSetConverter.class)
     String ingredients;
 
     @OneToMany(mappedBy = "cocktail")
