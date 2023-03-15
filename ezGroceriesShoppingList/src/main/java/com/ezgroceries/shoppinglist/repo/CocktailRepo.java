@@ -14,7 +14,7 @@ public interface CocktailRepo extends JpaRepository<CocktailEntity,String> {
     @Override
     List<CocktailEntity> findAll();
 
-    Optional<CocktailEntity> findByName(String name);
+    List<CocktailEntity> findByNameContaining(String name);
 
 
 }

@@ -1,13 +1,17 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
 
+import com.ezgroceries.shoppinglist.model.entity.CocktailEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
 import org.springframework.util.CollectionUtils;
 
 public class CocktailDto {
 
-    @Schema(description = "Cocktail Id",name="id",required=true,defaultValue="23b3d85a-3928-41c0-a533-6538a71e17c4")
+    @Schema(description = "Id",name="id",required=true)
+    String id;
+
+    @Schema(description = "Cocktail Id",name="Cocktail id",required=true,defaultValue="23b3d85a-3928-41c0-a533-6538a71e17c4")
     String cocktailId;
 
     @Schema(description = "Cocktail Name",name="name",required=true,defaultValue="Margerita")
@@ -26,6 +30,7 @@ public class CocktailDto {
     Set<String> ingredients;
 
     public CocktailDto(Builder builder) {
+        this.id = builder.id;
         this.cocktailId = builder.cocktailId;
         this.name = builder.name;
         this.glass = builder.glass;
@@ -34,6 +39,9 @@ public class CocktailDto {
         this.instructions = builder.instructions;
     }
 
+    public String getId() {
+        return id;
+    }
 
     public String getCocktailId() {
         return cocktailId;
@@ -62,7 +70,8 @@ public class CocktailDto {
     @Override
     public String toString() {
         return "CocktailDto{" +
-                "cocktailId='" + cocktailId + '\'' +
+                "id='" + id + '\'' +
+                ", cocktailId='" + cocktailId + '\'' +
                 ", name='" + name + '\'' +
                 ", glass='" + glass + '\'' +
                 ", image='" + image + '\'' +
@@ -72,12 +81,13 @@ public class CocktailDto {
     }
 
     public static class Builder {
-       private  String cocktailId;
-       private  String name;
-       private  String glass;
-       private  String image;
-       private  String instructions;
-       private  Set<String> ingredients = Set.of();
+        private  String id;
+        private  String cocktailId;
+        private  String name;
+        private  String glass;
+        private  String image;
+        private  String instructions;
+        private  Set<String> ingredients = Set.of();
 
        private Builder(){}
 
@@ -85,8 +95,13 @@ public class CocktailDto {
         {
             return new Builder();
         }
-       
-       public Builder coctailId(String cocktailId) {
+
+
+        public Builder id(String id) {
+           this.id = id;
+           return this;
+        }
+       public Builder cocktailId(String cocktailId) {
            this.cocktailId = cocktailId;
            return this;
        }
@@ -136,9 +151,17 @@ public class CocktailDto {
            }
 
        }
+    }
 
-
-
+    public CocktailEntity getCocktailEntity(){
+        CocktailEntity cocktailEntity = new CocktailEntity();
+        cocktailEntity.setId(id);
+        cocktailEntity.setIdDrink(cocktailId);
+        cocktailEntity.setName(name);
+        cocktailEntity.setGlass(glass);
+        cocktailEntity.setInstructions(instructions);
+        cocktailEntity.setIngredients(ingredients);
+        return cocktailEntity;
     }
     
 }

@@ -4,6 +4,7 @@ import com.ezgroceries.shoppinglist.exception.ResourceNotFoundException;
 import com.ezgroceries.shoppinglist.exception.UniqueRecordException;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
+import com.ezgroceries.shoppinglist.model.entity.CocktailEntity;
 import com.ezgroceries.shoppinglist.out.CocktailDBClient;
 import com.ezgroceries.shoppinglist.repo.CocktailRepo;
 import com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepo;
@@ -38,20 +39,26 @@ public class GroceriesService {
 
     private List<CocktailDto> getCocktailDtoListFromRemote(String name) {
      return    this.cocktailDBClient.searchCocktails(name).getDrinks().stream().map(cocktailDb->
-            CocktailDto.Builder.newInstance().coctailId(cocktailDb.getIdDrink())
-                   .name(cocktailDb.getStrDrink())
-                   .glass(cocktailDb.getStrGlass())
-                   .instructions(cocktailDb.getStrInstructions())
-                   .ingredients(cocktailDb.getIngredients()).build()
+            CocktailDto.Builder.newInstance()
+                    .cocktailId(cocktailDb.getIdDrink())
+                    .name(cocktailDb.getStrDrink())
+                    .glass(cocktailDb.getStrGlass())
+                    .instructions(cocktailDb.getStrInstructions())
+                    .ingredients(cocktailDb.getIngredients()).build()
             ).collect(Collectors.toList());
     }
 
-    private List<CocktailDto> getCocktailDtoList(String name) {
-        return this.shoppingListRepo.findByName()
+    public List<CocktailDto> getCocktailDtoList(String name) {
+       return this.cocktailRepo.findByNameContaining(name).stream()
+               .map(CocktailEntity::getCocktailDto)
+               .collect(Collectors.toList());
     }
 
+    public CocktailDto saveAndUpdateCocktailEntity(CocktailDto cocktailDto){
+        return cocktailRepo.save(cocktailDto.getCocktailEntity()).getCocktailDto();
+    }
 
-
+    
 
     public ShoppingListDto createShoppingListDto(String name) {
         checkUniqShoppingListName(name);
@@ -59,7 +66,7 @@ public class GroceriesService {
                 .name(name)
                 .shoppingListId(UUID.randomUUID().toString())
                 .build();
-        groceriesRepoManuel.saveShoppingList(shoppingListDto);
+        shoppingListRepo.save(shoppingListDto.getShoppingListEntity());
         return shoppingListDto;
     }
 
@@ -73,16 +80,16 @@ public class GroceriesService {
 
 
     private void checkUniqShoppingListName(String name) {
-         groceriesRepoManuel.getByShoppingByName(name).ifPresent(s-> {throw new UniqueRecordException(String.format("there is same name shoopping list %s ",name));});
+         shoppingListRepo.findByName(name).ifPresent(s-> {throw new UniqueRecordException(String.format("there is same name shoopping list %s ",name));});
     }
 
     public ShoppingListDto getShoppingListDto(String shoppingListId) {
-          return  groceriesRepoManuel.getByShoppingById(shoppingListId)
-                  .orElseThrow(()-> {throw new ResourceNotFoundException(String.format("Shopping not found %s",shoppingListId));});
+          return  shoppingListRepo.findById(shoppingListId)
+                  .orElseThrow(()-> {throw new ResourceNotFoundException(String.format("Shopping not found %s",shoppingListId));}).;
     }
 
     public List<ShoppingListDto> shoppingListDtoList(){
-        return groceriesRepoManuel.getShoppingList();
+        return groceriesRepoManue.getShoppingList();
     }
 
 }

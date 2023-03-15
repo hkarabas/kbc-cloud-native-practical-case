@@ -1,7 +1,9 @@
 package com.ezgroceries.shoppinglist.model.entity;
 
+import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.utils.StringSetConverter;
 import java.util.Set;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -21,8 +23,12 @@ public class CocktailEntity {
 
     String name;
 
+    String glass;
+
+    String instructions;
+
     @Convert(converter = StringSetConverter.class)
-    String ingredients;
+    Set<String> ingredients;
 
     @OneToMany(mappedBy = "cocktailEntity")
     Set<CocktailShoppingListEntity> cocktail_shopping_lists;
@@ -39,9 +45,14 @@ public class CocktailEntity {
         this.name = name;
     }
 
-    public void setIngredients(String ingredients) {
+    public Set<String> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<String> ingredients) {
         this.ingredients = ingredients;
     }
+
 
     public String getId() {
         return id;
@@ -55,11 +66,34 @@ public class CocktailEntity {
         return name;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
 
     public Set<CocktailShoppingListEntity> getCocktail_shopping_lists() {
         return cocktail_shopping_lists;
+    }
+
+    public String getGlass() {
+        return glass;
+    }
+
+    public void setGlass(String glass) {
+        this.glass = glass;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public CocktailDto getCocktailDto() {
+       return   CocktailDto.Builder.newInstance()
+                 .id(getId())
+                 .cocktailId(getIdDrink())
+                 .name(getName())
+                 .glass(getGlass())
+                 .instructions(getInstructions())
+                 .ingredients(getIngredients()).build();
     }
 }

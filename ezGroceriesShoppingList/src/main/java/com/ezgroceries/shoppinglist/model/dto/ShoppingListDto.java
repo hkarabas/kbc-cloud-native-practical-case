@@ -1,5 +1,6 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
+import com.ezgroceries.shoppinglist.model.entity.ShoppingListEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
 
@@ -11,8 +12,8 @@ public class ShoppingListDto {
     @Schema(description = "Shopping List name",name="name",required=true,defaultValue="")
     String name;
 
-    @Schema(description = "Cocktail Id",name="id")
-    String cocktailId;
+    @Schema(description = "Cocktails List",name="Cocktails")
+    Set<CocktailDto> cocktailList;
 
     @Schema(description = "Cocktail include ingredients",name="ingredients")
     Set<String>  ingredients;
@@ -20,15 +21,9 @@ public class ShoppingListDto {
 
     public ShoppingListDto(Builder builder) {
         this.shoppingListId = builder.shoppingListId;
-        this.cocktailId = builder.cocktailId;
-        this.name = builder.name;
+,       this.name = builder.name;
         this.ingredients = builder.ingredients;
-    }
-
-    public ShoppingListDto setCocktail(String cocktailId,Set<String>  ingredients) {
-        this.cocktailId = cocktailId;
-        this.ingredients = ingredients;
-        return this;
+        this.cocktailList = builder.cocktailList;
     }
 
 
@@ -40,9 +35,7 @@ public class ShoppingListDto {
         return name;
     }
 
-    public String getCocktailId() {
-        return cocktailId;
-    }
+
 
     public Set<String> getIngredients() {
         return ingredients;
@@ -51,7 +44,7 @@ public class ShoppingListDto {
     public static class Builder {
         String shoppingListId;
         String name;
-        String cocktailId;
+        Set<CocktailDto> cocktailList;
         Set<String>  ingredients;
 
         private Builder(){}
@@ -68,6 +61,16 @@ public class ShoppingListDto {
             return  this;
         }
 
+        public Builder ingredients( Set<String>  ingredients) {
+            this.ingredients = ingredients;
+            return this;
+        }
+
+        public Builder cocktailList(Set<CocktailDto> cocktailList) {
+            this.cocktailList = cocktailList;
+            return this;
+        }
+   
         public ShoppingListDto build(){
             ShoppingListDto shoppingListDto = new ShoppingListDto(this);
             validate(shoppingListDto);
@@ -79,7 +82,13 @@ public class ShoppingListDto {
                 throw  new IllegalArgumentException("shoppingLis name is must be not null");
             }
         }
+    }
 
+  public ShoppingListEntity getShoppingListEntity() {
+        ShoppingListEntity shoppingListEntity = new ShoppingListEntity();
+        shoppingListEntity.setId(shoppingListId);
+        shoppingListEntity.setName(getName());
+        return shoppingListEntity;
     }
 
 }
