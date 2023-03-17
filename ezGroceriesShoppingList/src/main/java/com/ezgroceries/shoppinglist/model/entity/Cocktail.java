@@ -2,6 +2,7 @@ package com.ezgroceries.shoppinglist.model.entity;
 
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.utils.StringSetConverter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -13,10 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cocktail")
-public class CocktailEntity {
+public class Cocktail {
 
     @Id
-    String id;
+    UUID id;
 
     @Column(name="id_drink")
     String idDrink;
@@ -30,10 +31,10 @@ public class CocktailEntity {
     @Convert(converter = StringSetConverter.class)
     Set<String> ingredients;
 
-    @OneToMany(mappedBy = "cocktailEntity")
-    Set<CocktailShoppingListEntity> cocktail_shopping_lists;
+    @OneToMany(mappedBy = "cocktail")
+    Set<CocktailShoppingList> cocktail_shopping_lists;
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -54,7 +55,7 @@ public class CocktailEntity {
     }
 
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -67,9 +68,7 @@ public class CocktailEntity {
     }
 
 
-    public Set<CocktailShoppingListEntity> getCocktail_shopping_lists() {
-        return cocktail_shopping_lists;
-    }
+
 
     public String getGlass() {
         return glass;
@@ -86,10 +85,10 @@ public class CocktailEntity {
     public void setInstructions(String instructions) {
         this.instructions = instructions;
     }
-
+    @JsonIgnore
     public CocktailDto getCocktailDto() {
        return   CocktailDto.Builder.newInstance()
-                 .id(getId())
+                 .id(getId().toString())
                  .cocktailId(getIdDrink())
                  .name(getName())
                  .glass(getGlass())

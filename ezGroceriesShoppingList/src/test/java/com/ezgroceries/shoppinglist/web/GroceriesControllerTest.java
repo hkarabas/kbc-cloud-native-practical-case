@@ -16,15 +16,23 @@ import com.ezgroceries.shoppinglist.exception.ResourceNotFoundException;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDBResponse;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
+import com.ezgroceries.shoppinglist.model.entity.Cocktail;
+import com.ezgroceries.shoppinglist.model.entity.ShoppingList;
 import com.ezgroceries.shoppinglist.out.CocktailDBClient;
+import com.ezgroceries.shoppinglist.repo.CocktailRepo;
+import com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepo;
 import com.ezgroceries.shoppinglist.repo.GroceriesRepoManuel;
+import com.ezgroceries.shoppinglist.repo.ShoppingListRepo;
 import com.ezgroceries.shoppinglist.service.GroceriesService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -42,10 +50,18 @@ public class GroceriesControllerTest {
     GroceriesService groceriesService;
 
     @MockBean
-    GroceriesRepoManuel groceriesRepoManuel;
+    CocktailRepo cocktailRepo;
+
+    @MockBean
+    ShoppingListRepo shoppingListRepo;
+
+    @MockBean
+    CocktailShoppingListRepo cocktailShoppingListRepo;
 
     @MockBean
     CocktailDBClient cocktailDBClient;
+
+
 
     private  List<CocktailDto> cocktailDtoList = new ArrayList<>() ;
     private  List<ShoppingListDto> shoppingListDtoList = new ArrayList<>();
@@ -53,7 +69,7 @@ public class GroceriesControllerTest {
     @BeforeEach
     private  void init() {
         cocktailDtoList.add(
-                CocktailDto.Builder.newInstance().coctailId("23b3d85a-3928-41c0-a533-6538a71e17c4")
+                CocktailDto.Builder.newInstance().cocktailId("23b3d85a-3928-41c0-a533-6538a71e17c4")
                         .name("Margerita")
                         .glass("Cocktail glass")
                         .instructions("Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten..")
@@ -64,7 +80,7 @@ public class GroceriesControllerTest {
                                 "Salt")).build()
         );
         cocktailDtoList.add(
-                CocktailDto.Builder.newInstance().coctailId("d615ec78-fe93-467b-8d26-5d26d8eab073")
+                CocktailDto.Builder.newInstance().cocktailId("d615ec78-fe93-467b-8d26-5d26d8eab073")
                         .name("Blue Margerita"  )
                         .glass("Cocktail glass")
                         .instructions("Rub rim of  glass with lime juice. Dip rim in coarse salt..")
@@ -85,9 +101,14 @@ public class GroceriesControllerTest {
     @Test
     public void getCocktailList() throws Exception {
 
-        when(groceriesService.getCocktailList()).thenReturn(cocktailDtoList);
+        List<Cocktail> cocktails = cocktailDtoList.stream().map(CocktailDto::getCocktailEntity).collect(Collectors.toList());
 
-        mockMvc.perform(get("/cocktails").param("search","Russian"))
+        String search = "Russian";
+        when(cocktailRepo.findByNameContaining(search)).thenReturn(cocktails);
+        when(groceriesService.getCocktailListDbAndRemote(search)).thenReturn(cocktailDtoList);
+
+
+        mockMvc.perform(get("/cocktails").param("search",search))
                 .andExpectAll(status().isOk(),
                         content().contentType(MediaType.APPLICATION_JSON),
                         jsonPath("$[0].cocktailId",is("23b3d85a-3928-41c0-a533-6538a71e17c4")),
@@ -95,7 +116,7 @@ public class GroceriesControllerTest {
                         jsonPath("$[1].cocktailId",is("d615ec78-fe93-467b-8d26-5d26d8eab073")),
                         jsonPath("$[1].name",is("Blue Margerita")));
 
-        verify(groceriesService).getCocktailList();
+        verify(groceriesService).getCocktailListDbAndRemote(search);
     }
 
     @Test
@@ -148,25 +169,25 @@ public class GroceriesControllerTest {
 
     @Test
     public void addCocktailToShoppingList() throws Exception {
-        when(groceriesService.addCocktailToShoppingList("4ba92a46-1d1b-4e52-8e38-13cd56c7224c","23b3d85a-3928-41c0-a533-6538a71e17c4"))
+        when(groceriesService.addCocktailToShoppingList("4ba92a46-1d1b-4e52-8e38-13cd56c7224c",Set.of("23b3d85a-3928-41c0-a533-6538a71e17c4")))
                 .thenReturn(shoppingListDtoList.get(0));
         
         mockMvc.perform(post("/shopping-lists/{shoppingListId}/cocktails","4ba92a46-1d1b-4e52-8e38-13cd56c7224c").
                 param("cocktailId","23b3d85a-3928-41c0-a533-6538a71e17c4"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("Location","http://localhost/shopping-lists/4ba92a46-1d1b-4e52-8e38-13cd56c7224c/cocktails/4ba92a46-1d1b-4e52-8e38-13cd56c7224c"));
-        verify(groceriesService).addCocktailToShoppingList(any(String.class),any(String.class));
+        verify(groceriesService).addCocktailToShoppingList("4ba92a46-1d1b-4e52-8e38-13cd56c7224c",Set.of("23b3d85a-3928-41c0-a533-6538a71e17c4"));
     }
 
     @Test
     public void addCocktailToShoppingList_ThrowNotFoundCocktailId() throws Exception {
 
-        when(groceriesRepoManuel.getCocktailByCocktailId("23b3d85a-3928-41c0")).thenReturn(Optional.empty());
+        when(cocktailRepo.findById("23b3d85a-3928-41c0")).thenReturn(Optional.empty());
 
         mockMvc.perform(post("/shopping-lists/{shoppingListId}/cocktails","4ba92a46-1d1b-4e52-8e38-13cd56c7224c").
                         param("cocktailId","23b3d85a-3928-41c0-a533-6538a71e17c4"))
                 .andExpect(status().isNotFound());
-        verify(groceriesService).addCocktailToShoppingList(any(String.class),any(String.class));
+        verify(groceriesService).addCocktailToShoppingList("4ba92a46-1d1b-4e52-8e38-13cd56c7224c",Set.of("23b3d85a-3928-41c0-a533-6538a71e17c4"));
     }
 
     @Test
@@ -185,7 +206,6 @@ public class GroceriesControllerTest {
     public void getShoppingListById() throws Exception {
 
         ShoppingListDto shoppingListDto = shoppingListDtoList.get(0);
-        when(groceriesRepoManuel.getByShoppingById(any(String.class))).thenReturn(Optional.of(shoppingListDto));
         when(groceriesService.getShoppingListDto(any(String.class))).thenReturn(shoppingListDto);
 
         mockMvc.perform(get("/shopping-lists/{shoppingListId}","4ba92a46-1d1b-4e52-8e38-13cd56c7224c"))

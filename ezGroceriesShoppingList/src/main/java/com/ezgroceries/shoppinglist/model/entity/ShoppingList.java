@@ -2,7 +2,9 @@ package com.ezgroceries.shoppinglist.model.entity;
 
 
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,17 +14,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "shopping_list")
-public class ShoppingListEntity {
+public class ShoppingList {
 
     @Id
-    String id;
+    UUID id;
 
     String name;
 
-    @OneToMany(mappedBy = "shopping_list")
-    Set<CocktailShoppingListEntity>  cocktail_shopping_lists;
+    @OneToMany(mappedBy = "shoppingList")
+    Set<CocktailShoppingList>  cocktail_shopping_lists;
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -30,7 +32,7 @@ public class ShoppingListEntity {
         this.name = name;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -38,16 +40,13 @@ public class ShoppingListEntity {
         return name;
     }
 
-    public Set<CocktailShoppingListEntity> getCocktail_shopping_lists() {
-        return cocktail_shopping_lists;
-    }
-
+    @JsonIgnore
     public ShoppingListDto shoppingListDto() {
         return ShoppingListDto.Builder.newInstance()
-                .shoppingListId(id)
+                .shoppingListId(id.toString())
                 .name(name).cocktailList(cocktail_shopping_lists.stream()
-                        .map(CocktailShoppingListEntity::getCocktail).map(CocktailEntity::getCocktailDto).collect(Collectors.toSet()))
-                .ingredients(cocktail_shopping_lists.stream().map(CocktailShoppingListEntity::getCocktail).flatMap(str->str.getIngredients().stream()).collect(Collectors.toSet()))
+                        .map(CocktailShoppingList::getCocktail).map(Cocktail::getCocktailDto).collect(Collectors.toSet()))
+                .ingredients(cocktail_shopping_lists.stream().map(CocktailShoppingList::getCocktail).flatMap(str->str.getIngredients().stream()).collect(Collectors.toSet()))
                 .build();
     }
 }

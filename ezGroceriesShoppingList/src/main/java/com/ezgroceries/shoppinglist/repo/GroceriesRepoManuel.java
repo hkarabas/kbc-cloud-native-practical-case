@@ -23,7 +23,7 @@ public class GroceriesRepoManuel implements IGroceriesRepo {
     public List<CocktailDto> getCockTailsStatics() {
 
         List<CocktailDto> cocktailDtoList = new ArrayList<>();
-
+     /*
         cocktailDtoList.add(
                 CocktailDto.Builder.newInstance().coctailId("23b3d85a-3928-41c0-a533-6538a71e17c4")
                         .name("Margerita")
@@ -48,7 +48,8 @@ public class GroceriesRepoManuel implements IGroceriesRepo {
         );
 
         return cocktailDtoList;
-
+       */
+        return  cocktailDtoList;
     }
 
 

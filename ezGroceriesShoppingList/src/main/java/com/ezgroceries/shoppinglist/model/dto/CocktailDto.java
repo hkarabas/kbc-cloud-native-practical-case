@@ -1,9 +1,11 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
 
-import com.ezgroceries.shoppinglist.model.entity.CocktailEntity;
+import com.ezgroceries.shoppinglist.model.entity.Cocktail;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
+import java.util.UUID;
 import org.springframework.util.CollectionUtils;
 
 public class CocktailDto {
@@ -153,15 +155,16 @@ public class CocktailDto {
        }
     }
 
-    public CocktailEntity getCocktailEntity(){
-        CocktailEntity cocktailEntity = new CocktailEntity();
-        cocktailEntity.setId(id);
-        cocktailEntity.setIdDrink(cocktailId);
-        cocktailEntity.setName(name);
-        cocktailEntity.setGlass(glass);
-        cocktailEntity.setInstructions(instructions);
-        cocktailEntity.setIngredients(ingredients);
-        return cocktailEntity;
+    @JsonIgnore
+    public Cocktail getCocktailEntity(){
+        Cocktail cocktail = new Cocktail();
+        cocktail.setId(id != null ? UUID.fromString(id) : UUID.randomUUID());
+        cocktail.setIdDrink(cocktailId);
+        cocktail.setName(name);
+        cocktail.setGlass(glass);
+        cocktail.setInstructions(instructions);
+        cocktail.setIngredients(ingredients);
+        return cocktail;
     }
     
 }

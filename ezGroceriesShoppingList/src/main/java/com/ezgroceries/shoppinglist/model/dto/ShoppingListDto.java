@@ -1,8 +1,10 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
-import com.ezgroceries.shoppinglist.model.entity.ShoppingListEntity;
+import com.ezgroceries.shoppinglist.model.entity.ShoppingList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
+import java.util.UUID;
 
 public class ShoppingListDto {
 
@@ -21,7 +23,7 @@ public class ShoppingListDto {
 
     public ShoppingListDto(Builder builder) {
         this.shoppingListId = builder.shoppingListId;
-,       this.name = builder.name;
+        this.name = builder.name;
         this.ingredients = builder.ingredients;
         this.cocktailList = builder.cocktailList;
     }
@@ -84,11 +86,12 @@ public class ShoppingListDto {
         }
     }
 
-  public ShoppingListEntity getShoppingListEntity() {
-        ShoppingListEntity shoppingListEntity = new ShoppingListEntity();
-        shoppingListEntity.setId(shoppingListId);
-        shoppingListEntity.setName(getName());
-        return shoppingListEntity;
+    @JsonIgnore
+    public ShoppingList getShoppingListEntity() {
+        ShoppingList shoppingList = new ShoppingList();
+        shoppingList.setId(UUID.fromString(shoppingListId));
+        shoppingList.setName(getName());
+        return shoppingList;
     }
 
 }

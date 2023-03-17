@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -59,7 +60,7 @@ public class GroceriesController {
     @GetMapping("/cocktails")
     public List<CocktailDto> getCocktailList(@RequestParam String search) {
         logger.info(String.format("call getCocktailList by request param %s",search));
-        return this.groceriesService.getCocktailList();
+        return this.groceriesService.getCocktailListDbAndRemote(search);
     }
     @Operation(summary = "Get Cocktails from remote api",tags = "getCocktailListDB")
     @ApiResponses(value = {
@@ -99,7 +100,7 @@ public class GroceriesController {
     public ResponseEntity<Void> addCocktailToShoppingList(@PathVariable String shoppingListId,@RequestParam String cocktailId) {
 
         logger.info(String.format("call add cocktail shopping by request param %s %s",shoppingListId,cocktailId));
-        ShoppingListDto shoppingListDto = groceriesService.addCocktailToShoppingList(shoppingListId,cocktailId);
+        ShoppingListDto shoppingListDto = groceriesService.addCocktailToShoppingList(shoppingListId, Set.of(cocktailId));
         if (shoppingListDto != null){
             return entityWithLocation(shoppingListDto.getShoppingListId());
         } else {

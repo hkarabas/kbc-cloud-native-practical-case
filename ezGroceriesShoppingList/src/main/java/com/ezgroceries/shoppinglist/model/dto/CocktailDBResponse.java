@@ -1,8 +1,12 @@
 package com.ezgroceries.shoppinglist.model.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 
 public class CocktailDBResponse  {
 
@@ -14,8 +18,9 @@ public class CocktailDBResponse  {
 
     public void setDrinks(List<DrinkResource> drinks) {
         this.drinks = drinks;
-
     }
+
+
 
     public static class DrinkResource {
         private String idDrink;
@@ -245,23 +250,36 @@ public class CocktailDBResponse  {
             this.strMeasure10 = strMeasure10;
         }
 
+        @JsonIgnore
         public Set<String> getIngredients() {
-            return Set.of(  strIngredient1,strIngredient2,strIngredient3,
-                            strIngredient4,strIngredient5,strIngredient6,
-                            strIngredient7,strIngredient8,strIngredient9,
-                            strIngredient10);
+            return Arrays.asList(strIngredient1, strIngredient2, strIngredient3,
+                    strIngredient4, strIngredient5, strIngredient6,
+                    strIngredient7, strIngredient8, strIngredient9,
+                    strIngredient10).stream().filter(StringUtils::isNotBlank).collect(Collectors.toSet());
+
+
         }
 
+        @JsonIgnore
         public Set<String> getMeasures() {
-            return Set.of(  strMeasure1,strMeasure2,strMeasure3,
+            return Arrays.asList(strMeasure1,strMeasure2,strMeasure3,
                     strMeasure4,strIngredient5,strIngredient6,
                     strIngredient7,strIngredient8,strIngredient9,
-                    strIngredient10);
+                    strIngredient10).stream().filter(StringUtils::isNotBlank).collect(Collectors.toSet());
         }
 
 
+        @JsonIgnore
+        public CocktailDto cocktailDto() {
+            return  CocktailDto.Builder.newInstance()
+                    .cocktailId(getIdDrink())
+                    .glass(getStrGlass())
+                    .ingredients(getIngredients())
+                    .name(getStrDrink())
+                    .image(getStrDrinkThumb())
+                    .instructions(getStrInstructions()).build();
 
-
+        }
 
     }
 
