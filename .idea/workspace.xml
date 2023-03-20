@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d56dcd-35ad-47e7-8d75-d7d7452d69df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/config/WebServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/keystore/local-keystore.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/keystore/local-truststore.jks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_classgraph_classgraph_4_8_83.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_webflux_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_webmvc_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_core_v3_swagger_annotations_2_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_3_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_2_0_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_2_0_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-01-spring-boot/.idea/sonarlint/issuestore/2/d/2db74f2b3a3acf5c705bb95a20b287d5608b7506" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-01-spring-boot/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/lab-01-spring-boot/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-01-spring-boot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab-01-spring-boot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-05-jpa/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab-05-jpa/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-07-hardening/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab-07-hardening/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +203,7 @@
       <workItem from="1678347504997" duration="25539000" />
       <workItem from="1678449484100" duration="60551000" />
       <workItem from="1678961826342" duration="31337000" />
-      <workItem from="1679080533154" duration="17684000" />
+      <workItem from="1679080533154" duration="19692000" />
     </task>
     <servers />
   </component>
