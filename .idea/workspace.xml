@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76d56dcd-35ad-47e7-8d75-d7d7452d69df" name="Changes" comment="" />
+    <list default="true" id="76d56dcd-35ad-47e7-8d75-d7d7452d69df" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/config/WebServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/keystore/local-keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/keystore/local-truststore.jks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_classgraph_classgraph_4_8_83.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_webflux_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_webmvc_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_3_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_core_v3_swagger_annotations_2_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_3_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_2_0_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_2_0_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-spring-boot/.idea/sonarlint/issuestore/2/d/2db74f2b3a3acf5c705bb95a20b287d5608b7506" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-spring-boot/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/lab-01-spring-boot/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-01-spring-boot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab-01-spring-boot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-05-jpa/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab-05-jpa/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-07-hardening/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab-07-hardening/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,36 +64,126 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "/Users/jf16322/IdeaProjects/kbc-native-cloud/kbc-cloud-native-practical-case",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jf16322/IdeaProjects/kbc-native-cloud/kbc-cloud-native-practical-case/ezGroceriesShoppingList/src/main/resources&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.certificates&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;76a762cdceeeb98aaf98dee8b97f7b5e&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources" />
+      <recent name="$PROJECT_DIR$/ezGroceriesShoppingList/src/test/resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn clean package" />
       <command value="mvn clean install" />
+      <command value="mvn clean package" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.EzGroceriesShoppingListApplication">
+    <configuration name="CocktailShoppingListRepoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ezGroceriesShoppingList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ezgroceries.shoppinglist.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ezgroceries.shoppinglist.repo" />
+      <option name="MAIN_CLASS_NAME" value="com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CocktailShoppingListRepoTest.cocktailShoppingListRepo_Delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ezGroceriesShoppingList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ezgroceries.shoppinglist.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ezgroceries.shoppinglist.repo" />
+      <option name="MAIN_CLASS_NAME" value="com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepoTest" />
+      <option name="METHOD_NAME" value="cocktailShoppingListRepo_Delete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CocktailShoppingListRepoTest.cocktailShoppingListRepo_Save_and_checkMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ezGroceriesShoppingList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ezgroceries.shoppinglist.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ezgroceries.shoppinglist.repo" />
+      <option name="MAIN_CLASS_NAME" value="com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepoTest" />
+      <option name="METHOD_NAME" value="cocktailShoppingListRepo_Save_and_checkMap" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CocktailShoppingListRepoTest.cocktailShoppingListRepo_save_and_findId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ezGroceriesShoppingList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ezgroceries.shoppinglist.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ezgroceries.shoppinglist.repo" />
+      <option name="MAIN_CLASS_NAME" value="com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepoTest" />
+      <option name="METHOD_NAME" value="cocktailShoppingListRepo_save_and_findId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CocktailShoppingListRepoTest.should_be_get_zero_record" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ezGroceriesShoppingList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ezgroceries.shoppinglist.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ezgroceries.shoppinglist.repo" />
+      <option name="MAIN_CLASS_NAME" value="com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepoTest" />
+      <option name="METHOD_NAME" value="should_be_get_zero_record" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EzGroceriesShoppingListApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
       <module name="ezGroceriesShoppingList" />
@@ -74,8 +192,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.CocktailShoppingListRepoTest" />
+      <item itemvalue="JUnit.CocktailShoppingListRepoTest.cocktailShoppingListRepo_Delete" />
+      <item itemvalue="JUnit.CocktailShoppingListRepoTest.cocktailShoppingListRepo_Save_and_checkMap" />
+      <item itemvalue="JUnit.CocktailShoppingListRepoTest.cocktailShoppingListRepo_save_and_findId" />
+      <item itemvalue="JUnit.CocktailShoppingListRepoTest.should_be_get_zero_record" />
+      <item itemvalue="Spring Boot.EzGroceriesShoppingListApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CocktailShoppingListRepoTest" />
+        <item itemvalue="JUnit.CocktailShoppingListRepoTest.cocktailShoppingListRepo_Save_and_checkMap" />
+        <item itemvalue="JUnit.CocktailShoppingListRepoTest.cocktailShoppingListRepo_Delete" />
+        <item itemvalue="JUnit.CocktailShoppingListRepoTest.cocktailShoppingListRepo_save_and_findId" />
+        <item itemvalue="JUnit.CocktailShoppingListRepoTest.should_be_get_zero_record" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="76d56dcd-35ad-47e7-8d75-d7d7452d69df" name="Changes" comment="" />
@@ -84,7 +222,11 @@
       <option name="presentableId" value="Default" />
       <updated>1677586236190</updated>
       <workItem from="1677586237599" duration="48000" />
-      <workItem from="1677586298644" duration="50601000" />
+      <workItem from="1677586298644" duration="87137000" />
+      <workItem from="1678347504997" duration="25539000" />
+      <workItem from="1678449484100" duration="60551000" />
+      <workItem from="1678961826342" duration="31337000" />
+      <workItem from="1679080533154" duration="17684000" />
     </task>
     <servers />
   </component>
@@ -101,5 +243,185 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/web/GroceriesControllerTest.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/repo/GroceriesRepoManuel.java</url>
+          <line>82</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/web/GroceriesControllerTest.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/repo/GroceriesRepoManuel.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>116</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/web/GroceriesControllerTest.java</url>
+          <line>171</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/web/GroceriesControllerTest.java</url>
+          <line>183</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/web/GroceriesControllerTest.java</url>
+          <line>204</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/web/GroceriesControllerTest.java</url>
+          <line>205</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
+          <line>128</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailShoppingListRepoTest.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailShoppingListRepoTest.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailShoppingListRepoTest.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailShoppingListRepoTest.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailShoppingListRepoTest.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailRepoTest.java</url>
+          <line>66</line>
+          <properties class="com.ezgroceries.shoppinglist.repo.CocktailRepoTest" method="cocktail_update">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

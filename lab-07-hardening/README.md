@@ -98,10 +98,10 @@ public interface CocktailDBClient {
             List<CocktailEntity> cocktailEntities = cocktailRepository.findByNameContainingIgnoreCase(search);
 
             CocktailDBResponse cocktailDBResponse = new CocktailDBResponse();
-            cocktailDBResponse.setDrinks(cocktailEntities.stream().map(cocktailEntity -> {
+            cocktailDBResponse.setDrinks(cocktailEntities.stream().map(cocktail -> {
                 CocktailDBResponse.DrinkResource drinkResource = new CocktailDBResponse.DrinkResource();
-                drinkResource.setIdDrink(cocktailEntity.getIdDrink());
-                drinkResource.setStrDrink(cocktailEntity.getName());
+                drinkResource.setIdDrink(cocktail.getIdDrink());
+                drinkResource.setStrDrink(cocktail.getName());
                 //...omitted, all attributes need to be mapped
                 return drinkResource;
             }).collect(Collectors.toList()));

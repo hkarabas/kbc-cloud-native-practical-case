@@ -105,15 +105,15 @@ public List<CocktailResource> mergeCocktails(List<CocktailDBResponse.DrinkResour
 
         //Stream over all the drinks, map them to the existing ones, persist a new one if not existing
         Map<String, CocktailEntity> allEntityMap=drinks.stream().map(drinkResource->{
-        CocktailEntity cocktailEntity=existingEntityMap.get(drinkResource.getIdDrink());
-        if(cocktailEntity==null){
+        CocktailEntity cocktail=existingEntityMap.get(drinkResource.getIdDrink());
+        if(cocktail==null){
         CocktailEntity newCocktailEntity=new CocktailEntity();
         newCocktailEntity.setId(UUID.randomUUID());
         newCocktailEntity.setIdDrink(drinkResource.getIdDrink());
         newCocktailEntity.setName(drinkResource.getStrDrink());
-        cocktailEntity=cocktailRepository.save(newCocktailEntity);
+        cocktail=cocktailRepository.save(newCocktailEntity);
         }
-        return cocktailEntity;
+        return cocktail;
         }).collect(Collectors.toMap(CocktailEntity::getIdDrink,o->o,(o,o2)->o));
 
         //Merge drinks and our entities, transform to CocktailResource instances
