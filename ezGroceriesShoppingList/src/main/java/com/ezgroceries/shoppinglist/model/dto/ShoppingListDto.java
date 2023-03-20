@@ -89,7 +89,7 @@ public class ShoppingListDto {
     @JsonIgnore
     public ShoppingList getShoppingListEntity() {
         ShoppingList shoppingList = new ShoppingList();
-        shoppingList.setId(UUID.fromString(shoppingListId));
+        shoppingList.setId(shoppingListId != null ? UUID.fromString(shoppingListId) : UUID.randomUUID());
         shoppingList.setName(getName());
         return shoppingList;
     }

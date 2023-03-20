@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ShoppingListRepo extends JpaRepository<ShoppingList,String> {
+public interface ShoppingListRepo extends JpaRepository<ShoppingList,UUID> {
 
     @Override
     List<ShoppingList> findAll();

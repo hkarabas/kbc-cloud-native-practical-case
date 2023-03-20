@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CocktailRepo extends JpaRepository<Cocktail,String> {
+public interface CocktailRepo extends JpaRepository<Cocktail,UUID> {
 
 
     Optional<Cocktail> findById(UUID s);

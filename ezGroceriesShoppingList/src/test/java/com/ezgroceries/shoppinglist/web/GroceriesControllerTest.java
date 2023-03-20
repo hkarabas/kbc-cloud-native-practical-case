@@ -17,11 +17,9 @@ import com.ezgroceries.shoppinglist.model.dto.CocktailDBResponse;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDto;
 import com.ezgroceries.shoppinglist.model.dto.ShoppingListDto;
 import com.ezgroceries.shoppinglist.model.entity.Cocktail;
-import com.ezgroceries.shoppinglist.model.entity.ShoppingList;
 import com.ezgroceries.shoppinglist.out.CocktailDBClient;
 import com.ezgroceries.shoppinglist.repo.CocktailRepo;
 import com.ezgroceries.shoppinglist.repo.CocktailShoppingListRepo;
-import com.ezgroceries.shoppinglist.repo.GroceriesRepoManuel;
 import com.ezgroceries.shoppinglist.repo.ShoppingListRepo;
 import com.ezgroceries.shoppinglist.service.GroceriesService;
 import java.util.ArrayList;
@@ -32,7 +30,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -182,7 +179,7 @@ public class GroceriesControllerTest {
     @Test
     public void addCocktailToShoppingList_ThrowNotFoundCocktailId() throws Exception {
 
-        when(cocktailRepo.findById("23b3d85a-3928-41c0")).thenReturn(Optional.empty());
+        when(cocktailRepo.findById(UUID.fromString("23b3d85a-3928-41c0"))).thenReturn(Optional.empty());
 
         mockMvc.perform(post("/shopping-lists/{shoppingListId}/cocktails","4ba92a46-1d1b-4e52-8e38-13cd56c7224c").
                         param("cocktailId","23b3d85a-3928-41c0-a533-6538a71e17c4"))
