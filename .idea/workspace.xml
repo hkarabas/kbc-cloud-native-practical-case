@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="76d56dcd-35ad-47e7-8d75-d7d7452d69df" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -203,7 +202,7 @@
       <workItem from="1678347504997" duration="25539000" />
       <workItem from="1678449484100" duration="60551000" />
       <workItem from="1678961826342" duration="31337000" />
-      <workItem from="1679080533154" duration="19692000" />
+      <workItem from="1679080533154" duration="29741000" />
     </task>
     <servers />
   </component>
@@ -224,11 +223,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
           <line>86</line>
@@ -261,11 +255,6 @@
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/repo/GroceriesRepoManuel.java</url>
           <line>84</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
@@ -304,21 +293,6 @@
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/controller/GroceriesController.java</url>
           <line>118</line>
           <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/service/GroceriesService.java</url>
@@ -384,6 +358,16 @@
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailShoppingListRepoTest.java</url>
           <line>95</line>
           <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/ezGroceriesShoppingList/src/test/java/com/ezgroceries/shoppinglist/repo/CocktailRepoTest.java</url>

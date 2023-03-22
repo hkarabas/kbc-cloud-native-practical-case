@@ -1,18 +1,22 @@
 package com.ezgroceries.shoppinglist.out;
 
 
+import com.ezgroceries.shoppinglist.controller.GroceriesController;
 import com.ezgroceries.shoppinglist.model.dto.CocktailDBResponse;
 import com.ezgroceries.shoppinglist.model.entity.Cocktail;
+import com.ezgroceries.shoppinglist.out.CocktailDBClient.CocktailDBClientFallback;
 import com.ezgroceries.shoppinglist.repo.CocktailRepo;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(name = "cocktailDBClient", url = "${cocktail-db.url}")
+@FeignClient(name = "cocktailDBClient", url = "${cocktail-db.url}" ,fallback = CocktailDBClientFallback.class )
 public interface CocktailDBClient {
 
     @GetMapping(value = "${cocktail-db.url.get-method}")
@@ -22,6 +26,9 @@ public interface CocktailDBClient {
     @Component
     class CocktailDBClientFallback implements CocktailDBClient {
 
+
+        private final Logger logger = LoggerFactory.getLogger(CocktailDBClient.class);
+
         private final CocktailRepo cocktailRepo;
 
         public CocktailDBClientFallback(CocktailRepo cocktailRepo) {
@@ -30,6 +37,9 @@ public interface CocktailDBClient {
 
         @Override
         public CocktailDBResponse searchCocktails(String search) {
+
+            logger.info("call for fail ");
+
             List<Cocktail> cocktailEntities = cocktailRepo.findByNameContaining(search);
 
             CocktailDBResponse cocktailDBResponse = new CocktailDBResponse();
