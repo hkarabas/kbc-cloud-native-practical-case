@@ -7,18 +7,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CocktailDBClientFallback implements CocktailDBClient {
+public class CocktailDBClientFallbacks implements CocktailDBClient {
 
 
-    private final Logger logger = LoggerFactory.getLogger(CocktailDBClientFallback.class);
+    private final Logger logger = LoggerFactory.getLogger(CocktailDBClientFallbacks.class);
 
     private final CocktailRepo cocktailRepo;
 
-    public CocktailDBClientFallback(CocktailRepo cocktailRepo) {
+    public CocktailDBClientFallbacks(CocktailRepo cocktailRepo) {
         this.cocktailRepo = cocktailRepo;
     }
 
