@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d56dcd-35ad-47e7-8d75-d7d7452d69df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2733e8d2-f22f-416e-b75b-6e3d91e5faae.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2733e8d2-f22f-416e-b75b-6e3d91e5faae.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2733e8d2-f22f-416e-b75b-6e3d91e5faae/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2733e8d2-f22f-416e-b75b-6e3d91e5faae/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClientFallbacks.java" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/java/com/ezgroceries/shoppinglist/out/CocktailDBClientFallbacks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ezGroceriesShoppingList/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +205,7 @@
       <workItem from="1679659947498" duration="1199000" />
       <workItem from="1679667233976" duration="2174000" />
       <workItem from="1680002023789" duration="3396000" />
-      <workItem from="1680595186848" duration="3048000" />
+      <workItem from="1680595186848" duration="3351000" />
     </task>
     <servers />
   </component>
